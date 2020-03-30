@@ -1,0 +1,21 @@
+<form action="<%= categories_create_third_path %>" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+대분류 선택하기 
+  <select name="first_class" id="first_class">
+  <% @first_classes.each do |f| %>
+    <option value="<%= f %>"><%= f %></option>  
+    <% end %>
+  </select><br>
+
+중분류 선택하기 
+  <select name="second_class" id="second_class">
+  <% @second_classes.each do |f| %>
+    <option value="<%= f %>"><%= f %></option>  
+    <% end %>
+  </select><br>
+
+소분류명 : <input type="string" name="third_class">
+  <br>
+   <button type="submit">제출</button>
+</form>

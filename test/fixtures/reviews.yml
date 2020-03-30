@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: 1
+  merits: MyText
+  demerits: MyText
+  product: one
+
+two:
+  grade: 1
+  merits: MyText
+  demerits: MyText
+  product: two

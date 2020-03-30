@@ -1,0 +1,30 @@
+<form action="<%=products_path %>" method="POST" enctype="multipart/form-data">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  이름 : <input type="string" name="name">
+  <br>
+  설명 : <input type="text" name="desc">
+  <br>
+  <input type="file" name="image"><br>
+  
+  대분류 : 
+  <select name="first_class" id="first_class">
+      <option value="교구">교구</option>
+      <option value="장난감">장난감</option>
+      <option value="도서">도서</option>
+  </select><br>
+
+  중분류 : 
+  <select name="second_class" id="second_class">
+      <option value="교구">교구</option>
+      <option value="장난감">장난감</option>
+      <option value="도서">도서</option>
+  </select><br>
+
+  소분류 : 
+  <select name="third_class" id="third_class">
+      <option value="교구">교구</option>
+      <option value="장난감">장난감</option>
+      <option value="도서">도서</option>
+  </select>
+  <br><button type="submit">제출</button>
+</form>

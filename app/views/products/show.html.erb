@@ -1,0 +1,40 @@
+
+<h3> 제품정보 </h3>
+
+    제품번호 : <%= @product.id %><br>
+    이름 : <%= @product.name %><br>
+    설명 : <%= @product.desc %><br>
+    대분류 : <%= @product.first_class %><br>
+    중분류 : <%= @product.second_class %><br>
+    소분류 : <%= @product.third_class %><hr>
+    <% if @product.image.attached? %>
+    image<br> <%= image_tag url_for(@product.image) %>
+    <% end %>
+
+
+<h3> 후기 남기기 </h3>
+<form action="<%= product_reviews_path(@product) %>" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <% unless @grade_average.blank? %>
+  평점 평균 : <%= "%0.2f"% @grade_average %><br>
+  <% end %>
+  평점 : 
+  <% @grades.each do |grade| %>
+  <input type="checkbox" name="selector" value="<%= grade %>"/> <%=grade %> </div> 
+  <% end %>
+                                      
+  <br>
+  장점 : <input type="text" name="merits">
+  <br>
+  단점 : <input type="text" name="demerits">
+  <button type="submit">제출</button>
+</form><hr>
+
+<h3> 후기목록 </h3>
+<% Review.where(product_id: @product.id).each do |review|%>
+    사용자 : <%= review.user.name %><br>
+    평점 : <%= review.grade %><br> 
+    장점 : <%= review.merits %><br> 
+    단점 : <%= review.demerits %><hr> 
+
+<% end %> 

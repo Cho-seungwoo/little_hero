@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>id</th>
+    <th>이름</th>
+    <th>설명</th>
+    <th>링크</th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>    
+      <td><%= product.name %></td>
+      <td><%= product.desc %></td>
+	 <td>
+        <a href="<%= product_path(product) %>">확인</a>
+        <a href="<%= edit_product_path(product) %>">수정</a>
+        <a href="<%= product_path(product) %>" data-method="delete">삭제</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<a href="/ranks/index"> 상품 랭킹 보러가기 </a><br>
+<a href="<%= new_product_path %>"> 새 상품 추가하기 </a><br>
+<a href="<%= categories_path %>"> 새 분류 추가하기 </a>
+
+<% if user_signed_in? %>
+  <a href="/users/sign_out" data-method="delete"> 로그아웃 </a> 
+<% end %>

@@ -1,0 +1,11 @@
+
+<a href="<%= categories_new_first_path %>"> 새 대분류 추가하기 </a><br>
+<a href="<%= categories_new_second_path %>"> 새 중분류 추가하기 </a><br>
+<a href="<%= categories_new_third_path %>"> 새 소분류 추가하기 </a><br>
+
+<% @categories.each do |c| %>
+    대분류 : <%= c.first_class %>
+    중분류 : <%= c.second_class %><br>
+    소분류 : <%= c.third_class %><br>
+
+<% end %>

@@ -1,0 +1,6 @@
+<form action="<%= categories_create_first_path %>" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  대분류명 : <input type="string" name="first_class">
+  <br>
+   <button type="submit">제출</button>
+</form>
