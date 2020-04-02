@@ -46,24 +46,23 @@
 
   </div>
 
-  <br><h6> 자녀 정보 </h6>
-
-    <div class="field">
-        <%= f.fields_for(resource, as: resource_name, url: kid_user_registration_path(resource_name)) do |g| %>
-        <div class="field">
-          <%= g.label :sex %><br />
-          <%= g.select :sex, options_for_select(Kid_user.sexes.map {|k,v| [k,k]}) %>
-        </div>
-        <div class="field">
-          <%= g.label :birthday %><br />
-          <%= g.date_select :birthday, :prompt => {:month => '월', :day => '일', :year => '년도'}, 
-          start_year: Date.today.year, end_year: Date.today.year - 60, autocomplete: "birthday", 
-          use_two_digit_numbers:true %>
-        </div>
-    <% end %>
-
-    </div>
-
+  <br>
+  <h6> 자녀 정보 </h6>
+  <div class="kid_user_fields">
+      <%= f.fields_for :kid_users, resource.kid_users.build do |g| %>
+          <div class="field">
+              <%= g.label :sex %><br />
+              <%= g.select :sex, options_for_select(KidUser.sexes.map {|k,v| [k,k]}) %>
+          </div>
+          <div class="field">
+              <%= g.label :birthday %><br />
+              <%= g.date_select :birthday, :prompt => {:month => '월', :day => '일', :year => '년도'}, 
+              start_year: Date.today.year, end_year: Date.today.year - 60, autocomplete: "birthday", 
+              use_two_digit_numbers:true %>
+          </div>
+      <% end %>
+  </div>
+  
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

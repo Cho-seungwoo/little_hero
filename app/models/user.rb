@@ -7,9 +7,6 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :kid_users, dependent: :destroy
   accepts_nested_attributes_for :kid_users, :allow_destroy => true
-    
   
-  
-
   enum sex: [:male, :female, :unknown]
 end
