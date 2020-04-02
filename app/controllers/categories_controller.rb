@@ -9,23 +9,21 @@ class CategoriesController < ApplicationController
     category.first_class = params[:first_class]
     category.save
     
-    redirect_to categories_path(fallback_location: root_path)
-    
+    redirect_to categories_path
   end
 
   def new_second
     @first_classes= Category.pluck(:first_class).uniq
-    
   end
 
   def create_second
-    category = Category.new
-    category.first_class = params[:first_class]
-    category.second_class = params[:second_class]
-    category.save
+    # category = Category.new
+    Category.create(first_class: params[:first_class], second_class: params[:second_class])
+    # category.first_class = params[:first_class]
+    # category.second_class = params[:second_class]
+    # category.save
     
-    redirect_to categories_path(fallback_location: root_path)
-    
+    redirect_to categories_path
   end
 
   def new_third

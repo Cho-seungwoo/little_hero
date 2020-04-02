@@ -23,7 +23,7 @@ class RanksController < ApplicationController
      #@movies = Movie.where("strftime('%Y', release_date) = ?", 2013)
      age_pri_34_ranks = Review.joins(:user).where(users: {kid_birthdate: '2014-01-01'..'2015-12-31'}).select("product_id, count(*) as vote_count").
      group("product_id").order("count(*) DESC").limit(5)
-
+    
      age_pri_56_ranks = Review.joins(:user).where(users: {kid_birthdate: '2016-01-01'..'2017-12-31'}).select("product_id, count(*) as vote_count").
      group("product_id").order("count(*) DESC").limit(5)
 
@@ -42,7 +42,7 @@ class RanksController < ApplicationController
 
       # 동일 연령별
 
-     @same_age_ranks = Review.joins(:user).where(users: {kid_birthdate: current_user.kid_birthdate}).select("product_id, count(*) as vote_count").
+     @same_age_ranks = Review.joins(:user).where(users: {kid_birthdate: current_user.kid_birthdate.beginning_of_year..current_user.kid_birthdate.end_of_year}).select("product_id, count(*) as vote_count").
      group("product_id").order("count(*) DESC").limit(5)
 
      #@same_age_ranks = Review.joins(:user).where{|a| a.user.kid_birthdate.year == current_user.kid_birthdate.year}.select("product_id, count(*) as vote_count").

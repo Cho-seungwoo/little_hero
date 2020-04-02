@@ -19,10 +19,13 @@
   <% end %>
 </table>
 
-<a href="/ranks/index"> 상품 랭킹 보러가기 </a><br>
+<br><a href="/ranks/index"> 상품 랭킹 보러가기 </a><br>
 <a href="<%= new_product_path %>"> 새 상품 추가하기 </a><br>
 <a href="<%= categories_path %>"> 새 분류 추가하기 </a>
 
 <% if user_signed_in? %>
-  <a href="/users/sign_out" data-method="delete"> 로그아웃 </a> 
+  <hr> <a href="<%= destroy_user_session_path %>" data-method="delete"> 로그아웃 </a> 
+<% else %>
+  <hr> <a href="<%= new_user_session_path %>"> 로그인 하기 </a>
+  <br> <a href="<%= new_user_registration_path %>"> 회원가입 하기 </a> 
 <% end %>

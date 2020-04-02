@@ -1,15 +1,11 @@
-class User < ApplicationRecord
+class KidUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :reviews, dependent: :destroy
-  has_many :kid_users, dependent: :destroy
-  accepts_nested_attributes_for :kid_users, :allow_destroy => true
-    
   
+  belongs_to :user
   
-
   enum sex: [:male, :female, :unknown]
+
 end
