@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'any_login'
 gem 'rails_db'
+gem 'jquery-rails'
+gem "cocoon"
+

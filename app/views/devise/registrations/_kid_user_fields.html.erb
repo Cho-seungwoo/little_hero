@@ -1,0 +1,14 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :sex %><br />
+    <%= f.select :sex, options_for_select(KidUser.sexes.map {|k,v| [k,k]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, :prompt => {:month => '월', :day => '일', :year => '년도'}, 
+                start_year: Date.today.year, end_year: Date.today.year - 60, autocomplete: "birthday", 
+                use_two_digit_numbers:true %>
+  
+  </div>
+  <%= link_to_remove_association "제거", f %>
+</div>
