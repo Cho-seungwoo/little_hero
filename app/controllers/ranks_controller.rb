@@ -10,8 +10,7 @@ class RanksController < ApplicationController
      group("product_id").order("count(*) DESC").limit(5)
 
      #성별
-     @gender_male_ranks = Review.joins(:user).where(users: {kid_gender: '0'}).select("product_id, count(*) as vote_count").
-     group("product_id").order("count(*) DESC").limit(5)
+     @gender_male_ranks = Review.includes(user: :kid_users).where(kid_users: {sex: 'male'}).select("product_id, count(*) as vote_count").group("product_id").order("count(*) DESC").limit(5)
 
      @gender_female_ranks = Review.joins(:user).where(users: {kid_gender: '1'}).select("product_id, count(*) as vote_count").
      group("product_id").order("count(*) DESC").limit(5)

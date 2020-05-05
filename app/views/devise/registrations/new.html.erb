@@ -51,7 +51,7 @@
 <h6> 자녀 정보 </h6>
 <div class="kid_user_fields">
   <%= f.fields_for :kid_users, resource.kid_users.build do |g| %>
-    <%#= render("kid_user_fields", f: g) %>
+    <%= render("kid_user_fields", f: g) %>
     <div class="links">
       <%= link_to_add_association '아이정보 추가', f, :kid_users %>
     </div>
